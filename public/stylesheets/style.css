@@ -1,8 +1,12 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
 }
 
-a {
-  color: #00B7FF;
+.sidebar {
+  width: 180px;
+}
+
+.content {
+  padding-left: 20px;
+  width: calc(100% - 200px);
 }

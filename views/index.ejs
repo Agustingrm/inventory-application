@@ -2,10 +2,18 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <%- include('partials/sidebar'); %>
+    <div class='content'>
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
+      <ul>
+        <li><strong>Items: </strong> <%- data.item_count %> </li>
+        <li><strong>Brands: </strong> <%- data.brand_count %> </li>
+        <li><strong>Categories: </strong> <%- data.category_count %> </li>
+      </ul>
+    </div>
   </body>
 </html>
