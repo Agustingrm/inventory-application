@@ -47,6 +47,10 @@ function itemCreate(name, description, category, price, brand, amount_stock, sku
 }
 
 function brandCreate(name, cb) {
+  brandDetail = {
+    name: name,
+  };
+
   var brand = new Brand({ name: name });
 
   brand.save(function (err) {

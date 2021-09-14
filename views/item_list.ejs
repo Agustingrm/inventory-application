@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
+      <% item_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}) %>
+      <% let i = 0 %> <% item_list.forEach(()=>{ %>
+      <p><strong> <%= item_list[i].name %> </strong></p>
+      <ul>
+        <li><strong>Description: </strong> <%= item_list[i].description %></li>
+        <li><strong>Category: </strong> <%= item_list[i].category.name %></li>
+        <li><strong>Price: </strong> <%= item_list[i].price %></li>
+        <li><strong>Brand: </strong> <%= item_list[i].brand.name %></li>
+        <li><strong>Amount in Stock: </strong> <%= item_list[i].amount_stock %></li>
+        <li><strong>SKU: </strong> <%= item_list[i].sku.toUpperCase() %></li>
+        <a href='<%=item_list[i].url%>'>Details</a>
+      </ul>
+      <% i += 1 %> <%}) %>
+    </div>
+  </body>
+</html>
