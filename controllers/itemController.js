@@ -37,8 +37,27 @@ exports.item_list = function (req, res) {
 };
 
 // Display detail page for a specific Item.
-exports.item_detail = function (req, res) {
-  res.send("NOT IMPLEMENTED: Item detail: " + req.params.id);
+exports.item_detail = function (req, res, next) {
+  async.parallel(
+    {
+      item: function (callback) {
+        Item.findById(req.params.id).populate("brand category").exec(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      if (results.item == null) {
+        // No results.
+        var err = new Error("Item not found");
+        err.status = 404;
+        return next(err);
+      }
+      // Successful, so render.
+      res.render("item_detail", { title: results.item.title, item: results.item });
+    }
+  );
 };
 
 // Display Item create form on GET.

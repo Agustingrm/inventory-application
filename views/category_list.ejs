@@ -10,13 +10,13 @@
       <h1><%= title %></h1>
       <p>Welcome to <%= title %></p>
       <% category_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ?
-      1 : 0;}) %> <% let i = 0 %> <% category_list.forEach(()=>{ %>
+      1 : 0;}) %> <% for(let category of category_list) {%>
       <ul>
         <li>
-          <a href="<%=category_list[i].url%>"><strong> <%= category_list[i].name %> </strong></a>
+          <a href="<%=category.url%>"><strong> <%= category.name %> </strong></a>
         </li>
       </ul>
-      <% i += 1 %> <%}) %>
+      <% } %>
     </div>
   </body>
 </html>

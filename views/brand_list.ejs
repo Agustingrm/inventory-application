@@ -9,14 +9,14 @@
     <div class="content">
       <h1><%= title %></h1>
       <p>Welcome to <%= title %></p>
-      <% brand_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ?
-      1 : 0;}) %> <% let i = 0 %> <% brand_list.forEach(()=>{ %>
+      <% brand_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 :
+      0;}) %> <% for(let brand of brand_list) {%>
       <ul>
         <li>
-          <a href="<%=brand_list[i].url%>"><strong> <%= brand_list[i].name %> </strong></a>
+          <a href="<%=brand.url%>"><strong> <%= brand.name %> </strong></a>
         </li>
       </ul>
-      <% i += 1 %> <%}) %>
+      <% } %>
     </div>
   </body>
 </html>

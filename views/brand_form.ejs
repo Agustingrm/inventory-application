@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content" action="">
+      <h1><%= title %></h1>
+      <form method="POST">
+        <label for="name">Brand</label>
+        <input type="text" placeholder="Adidas, Nike, Reebok" name="name" value="<%= undefined === brand ? '' : brand.name%>" />
+        <input type="submit" value="Create" />
+      </form>
+      <% if(errors){ %> 
+      <% for(let error of errors) {%>
+        <p><%= error.msg %></p>
+      <% }} %>
+    </div>
+  </body>
+</html>

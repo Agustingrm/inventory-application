@@ -8,12 +8,12 @@
     <%- include('partials/sidebar'); %>
     <div class="content">
       <h1><%= title %></h1>
-      <p>Welcome to <%= brand.name %></p>
+      <p>Welcome to <%= category.name %></p>
       <ul>
-        <% for(let brand of brand_items) {%>
+        <% for(let category of category_items) {%>
         <li>
-          <a href="<%=brand.url%>"><strong> <%= brand.name %> </strong></a>
-          <p><%= brand.description %></p>
+          <a href="<%=category.url%>"><strong> <%= category.name %> </strong></a>
+          <p><%= category.description %></p>
         </li>
         <% } %>
       </ul>

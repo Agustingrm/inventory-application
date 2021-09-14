@@ -12,7 +12,7 @@ var ItemSchema = new Schema({
   amount_stock: { type: Number, required: true },
 });
 
-// Virtual for book's URL
+// Virtual for items URL
 ItemSchema.virtual("url").get(function () {
   return "/catalog/item/" + this._id;
 });

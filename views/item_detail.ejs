@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= item.name %></p>
+      <p><strong> <%= item.name %> </strong></p>
+      <ul>
+        <li><strong>Description: </strong> <%= item.description %></li>
+        <li><strong>Category: </strong> <%= item.category.name %></li>
+        <li><strong>Price: </strong> $<%= item.price %></li>
+        <li><strong>Brand: </strong> <%= item.brand.name %></li>
+        <li><strong>Amount in Stock: </strong> <%= item.amount_stock %></li>
+        <li><strong>SKU: </strong> <%= item.sku.toUpperCase() %></li>
+      </ul>
+    </div>
+  </body>
+</html>
