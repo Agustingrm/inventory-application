@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content" action="">
+      <h1><%= title %></h1>
+      <form method="POST">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Trousers, hats, shoes" name="name" value="<%= undefined === category ? '' : category.name%>" />
+        <label for="description">Description</label>
+        <input type="text" placeholder="Shoes made of leather with blue details" name="description" value="<%= undefined === category ? '' : category.description%>" />
+        <input type="submit" value="Create" />
+      </form>
+      <% if(errors){ %> 
+      <% for(let error of errors) {%>
+        <p><%= error.msg %></p>
+      <% }} %>
+    </div>
+  </body>
+</html>

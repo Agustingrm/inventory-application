@@ -1,8 +1,8 @@
 var Item = require("../models/item");
 var Category = require("../models/category");
 var Brand = require("../models/brand");
-
 var async = require("async");
+const { body, validationResult } = require("express-validator");
 
 exports.index = function (req, res) {
   async.parallel(
@@ -61,15 +61,113 @@ exports.item_detail = function (req, res, next) {
 };
 
 // Display Item create form on GET.
-exports.item_create_get = function (req, res) {
-  res.send("NOT IMPLEMENTED: Item create GET");
+exports.item_create_get = function (req, res, next) {
+  // Get all categories and brands, which we can use for adding to our item.
+  async.parallel(
+    {
+      categories: function (callback) {
+        Category.find(callback);
+      },
+      brands: function (callback) {
+        Brand.find(callback);
+      },
+    },
+    function (err, results) {
+      if (err) {
+        return next(err);
+      }
+      res.render("item_form", {
+        title: "Create Item",
+        categories: results.categories,
+        brands: results.brands,
+        item: "",
+        errors: "",
+      });
+    }
+  );
 };
 
 // Handle Item create on POST.
-exports.item_create_post = function (req, res) {
-  res.send("NOT IMPLEMENTED: Item create POST");
-};
+exports.item_create_post = [
+  // Convert the brand to an array.
+  (req, res, next) => {
+    if (!(req.body.brand instanceof Array)) {
+      if (typeof req.body.brand === "undefined") req.body.brand = [];
+      else req.body.brand = new Array(req.body.brand);
+    }
+    next();
+  },
 
+  // Validate and sanitise fields.
+  body("name", "Name must not be empty.").trim().isLength({ min: 1 }).escape(),
+  body("description", "Description must not be empty.").trim().isLength({ min: 1 }).escape(),
+  body("category.*").escape(),
+  body("price", "Price must not be empty").trim().isLength({ min: 1 }).isNumeric().escape(),
+  body("brand.*").escape(),
+  body("amount_stock", "Amount must not be empty").trim().isLength({ min: 1 }).isNumeric().escape(),
+  body("sku", "sku must not be empty").trim().isLength({ min: 1 }).escape(),
+
+  // Process request after validation and sanitization.
+  (req, res, next) => {
+    // Extract the validation errors from a request.
+    const errors = validationResult(req);
+
+    // Create a Item object with escaped and trimmed data.
+    var item = new Item({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      price: req.body.price,
+      brand: req.body.brand,
+      amount_stock: req.body.amount_stock,
+      sku: req.body.sku,
+    });
+
+    if (!errors.isEmpty()) {
+      // There are errors. Render form again with sanitized values/error messages.
+
+      // Get all brands and categories for form.
+      async.parallel(
+        {
+          brands: function (callback) {
+            Brand.find(callback);
+          },
+          categories: function (callback) {
+            Category.find(callback);
+          },
+        },
+        function (err, results) {
+          if (err) {
+            return next(err);
+          }
+          res.render("item_form", {
+            title: "Create Item",
+            categories: results.categories,
+            brands: results.brands,
+            item: item,
+            errors: errors.array() ,
+          });
+          // res.render("item_form", { 
+          //   title: "Create Item", 
+          //   categories: results.categories, 
+          //   brands: results.brands, 
+          //   item: item, 
+          //   errors: errors.array() });
+        }
+      );
+      return;
+    } else {
+      // Data from form is valid. Save item.
+      item.save(function (err) {
+        if (err) {
+          return next(err);
+        }
+        //successful - redirect to new item record.
+        res.redirect(item.url);
+      });
+    }
+  },
+];
 // Display Item delete form on GET.
 exports.item_delete_get = function (req, res) {
   res.send("NOT IMPLEMENTED: Item delete GET");

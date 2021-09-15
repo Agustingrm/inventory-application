@@ -9,6 +9,7 @@
     <div class="content">
       <h1><%= title %></h1>
       <p>Welcome to <%= brand.name %></p>
+      <% if(brand_items.length > 0) { %>
       <ul>
         <% for(let brand of brand_items) {%>
         <li>
@@ -17,6 +18,9 @@
         </li>
         <% } %>
       </ul>
+      <% } else { %>
+      <p>There are no items associated to this brand</p>
+      <% } %>
     </div>
   </body>
 </html>

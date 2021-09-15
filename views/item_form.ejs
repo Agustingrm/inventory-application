@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content" action="">
+      <h1><%= title %></h1>
+      <%= item %>
+      <form method="POST">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Air Max, Superstar, Pegasus" name="name" value="<%= undefined === item ? '' : item.name%>" />
+        <label for="description">Description</label>
+        <input type="text" placeholder="The lightest shirt on Earth" name="description" value="<%= undefined === item ? '' : item.description%>" />
+        <label for="category">Category</label>
+        <select type="select" placeholder="Select a category" name="category" value="<%= undefined === item ? '' : item.category%>" />
+        <% categories.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+        <% for(let category of categories) {%>
+          <% if (item) { %>
+            <option value="<%= category.id %>" selected="<% category.id.toString()===item.category._id.toString() ? 'selected' : false %>"> <%= category.name %></option>
+          <% } else { %>
+            <option value="<%= category._id %>"><%= category.name %></option>
+          <% }} %>
+        </select>
+        <label for="price">Price</label>
+        <input type="text" placeholder="Only numerical value, example: 99" name="price" value="<%= undefined === item ? '' : item.price%>" />
+        <label for="brand">Brand</label>
+        <select type="select" placeholder="Select a brand" name="brand" value="<%= undefined === item ? '' : item.brand%>" />
+          <% brands.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}); %>
+          <% for(let brand of brands) { %>
+            <% if (item) { %>
+              <option value="<%= brand.id %>" selected="<% brand.id.toString()===item.brand._id.toString() ? 'selected' : false %>"> <%= brand.name %></option>
+            <% } else { %>
+              <option value="<%= brand._id %>"><%= brand.name %></option>
+            <% }} %>
+        </select>
+        <label for="amount_stock">Amount in Stock</label>
+        <input type="text" placeholder="Amount of items in existance" name="amount_stock" value="<%= undefined === item ? '' : item.amount_stock%>" />
+        <label for="sku">SKU</label>
+        <input type="text" placeholder="Storage keeping Unit, example ED9362" name="sku" value="<%= undefined === item ? '' : item.sku%>" />
+        <input type="submit" value="Create" />
+      </form>
+      <% if(errors){ %> 
+      <% for(let error of errors) {%>
+        <p><%= error.msg %></p>
+      <% }} %>
+    </div>
+  </body>
+</html>
