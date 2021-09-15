@@ -18,6 +18,9 @@
         <li><strong>Amount in Stock: </strong> <%= item.amount_stock %></li>
         <li><strong>SKU: </strong> <%= item.sku.toUpperCase() %></li>
       </ul>
+      <hr />
+      <p><a href="<%= item.url +'/delete' %>">Delete</a></p>
+      <p><a href="<%= item.url +'/update' %>">Update</a></p>
     </div>
   </body>
 </html>

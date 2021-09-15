@@ -21,6 +21,9 @@
       <% } else { %>
       <p>There are no items associated to this brand</p>
       <% } %>
+      <hr>
+      <p><a href="<%= brand.url +'/delete' %>">Delete</a></p>
+      <p><a href="<%= brand.url +'/update' %>">Update</a></p>
     </div>
   </body>
 </html>

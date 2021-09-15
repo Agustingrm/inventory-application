@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var CategorySchema = new Schema({
   name: { type: String, required: true, minLength: 2, maxLength: 100 },
-  description: { type: String, required: true, minLength: 15, maxLength: 150 },
+  description: { type: String, required: true, minLength: 10, maxLength: 150 },
 });
 
 // Virtual for Genre's URL

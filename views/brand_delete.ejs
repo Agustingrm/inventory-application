@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content">
+      <% if(brand_items.length) { %>
+      <p><strong>Delete the following items before attempting to delete this brand</strong></p>
+      <h4>Items</h4>
+      <% for (let item in brand_items) { %>
+      <dl>
+        <dt><a href="<%= brand.url %>"><%= brand_items[item].name %></a></dt>
+        <dl><%= brand_items[item].description %></dl>
+      </dl>
+      <% } %> <% } else { %>
+      <p>Do you really want to delete this brand?</p>
+      <form method="POST">
+        <input type="hidden" id="brandid" name="brandid" required="true" value="<%= brand._id%>" />
+        <input type="submit" value="Delete" />
+      </form>
+      <% } %>
+    </div>
+  </body>
+</html>

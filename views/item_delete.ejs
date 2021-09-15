@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/sidebar'); %>
+    <div class="content">
+      <p>Do you really want to delete this item?</p>
+      <form method="POST">
+        <input type="hidden" id="itemid" name="itemid" required="true" value="<%= item._id%>" />
+        <input type="submit" value="Delete" />
+      </form>
+    </div>
+  </body>
+</html>
