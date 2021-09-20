@@ -39,7 +39,7 @@
         <input type="text" placeholder="Amount of items in existance" name="amount_stock" value="<%= undefined === item ? '' : item.amount_stock%>" />
         <label for="sku">SKU</label>
         <input type="text" placeholder="Storage keeping Unit, example ED9362" name="sku" value="<%= undefined === item ? '' : item.sku%>" />
-        <input type="submit" value="Create" />
+        <input type="submit" value="Submit" />
       </form>
       <% if(errors){ %> 
       <% for(let error of errors) {%>

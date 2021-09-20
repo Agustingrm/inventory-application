@@ -8,12 +8,18 @@ var favicon = require("serve-favicon");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var catalogRouter = require("./routes/catalog"); //Import routes for "catalog" area of site
+var compression = require('compression');
+var helmet = require('helmet');
 
 var app = express();
 
+app.use(helmet());
+app.use(compression()); //Compress Routes
+
 //Set up mongoose connection
 var mongoose = require("mongoose");
-var mongoDB = "mongodb+srv://agustingrm:inventory@cluster0.1wqqr.mongodb.net/inventory?retryWrites=true&w=majority";
+var dev_db_url = "mongodb+srv://agustingrm:inventory@cluster0.1wqqr.mongodb.net/inventory?retryWrites=true&w=majority";
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection error:"));

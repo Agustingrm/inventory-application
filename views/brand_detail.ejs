@@ -7,8 +7,7 @@
   <body>
     <%- include('partials/sidebar'); %>
     <div class="content">
-      <h1><%= title %></h1>
-      <p>Welcome to <%= brand.name %></p>
+      <h1><%= brand.name %></h1>
       <% if(brand_items.length > 0) { %>
       <ul>
         <% for(let brand of brand_items) {%>
@@ -21,9 +20,9 @@
       <% } else { %>
       <p>There are no items associated to this brand</p>
       <% } %>
-      <hr>
-      <p><a href="<%= brand.url +'/delete' %>">Delete</a></p>
-      <p><a href="<%= brand.url +'/update' %>">Update</a></p>
+      <hr />
+      <p class="delete"><a href="<%= brand.url +'/delete' %>">Delete</a></p>
+      <p class="update"><a href="<%= brand.url +'/update' %>">Update</a></p>
     </div>
   </body>
 </html>

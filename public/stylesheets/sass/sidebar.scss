@@ -1,0 +1,29 @@
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: $softGray;
+  border-right: 1px #888 solid;
+  position: fixed;
+  h2 {
+    color: black;
+    font-weight: 600;
+    text-align: center;
+  }
+  li {
+    list-style-type: none;
+    padding-left: 10px;
+
+  }
+  li:hover {
+    color: black;
+    font-weight: 600;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:visited {
+    color: inherit;
+  }
+}

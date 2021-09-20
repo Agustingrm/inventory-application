@@ -8,11 +8,11 @@
     <%- include('partials/sidebar'); %>
     <div class='content'>
       <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
+      <p>Welcome to this inventory application. Here you can create, remove, update and delete items that are in your deposit. At this moment, this database has:</p>
       <ul>
-        <li><strong>Items: </strong> <%- data.item_count %> </li>
-        <li><strong>Brands: </strong> <%- data.brand_count %> </li>
-        <li><strong>Categories: </strong> <%- data.category_count %> </li>
+        <li><span class='blackBoldText'>Items: </span> <%- data.item_count %> </li>
+        <li><span class='blackBoldText'>Brands: </span> <%- data.brand_count %> </li>
+        <li><span class='blackBoldText'>Categories: </span> <%- data.category_count %> </li>
       </ul>
     </div>
   </body>

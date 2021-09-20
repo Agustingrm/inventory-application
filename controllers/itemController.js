@@ -18,7 +18,7 @@ exports.index = function (req, res) {
       },
     },
     function (err, results) {
-      res.render("index", { title: "Inventory Home", error: err, data: results });
+      res.render("index", { title: "Home", error: err, data: results });
     }
   );
 };

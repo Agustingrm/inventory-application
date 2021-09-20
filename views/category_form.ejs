@@ -13,7 +13,7 @@
         <input type="text" placeholder="Trousers, hats, shoes" name="name" value="<%= undefined === category ? '' : category.name%>" />
         <label for="description">Description</label>
         <input type="text" placeholder="Shoes made of leather with blue details" name="description" value="<%= undefined === category ? '' : category.description%>" />
-        <input type="submit" value="Create" />
+        <input type="submit" value="Submit" />
       </form>
       <% if(errors){ %> 
       <% for(let error of errors) {%>

@@ -7,20 +7,18 @@
   <body>
     <%- include('partials/sidebar'); %>
     <div class="content">
-      <h1><%= title %></h1>
-      <p>Welcome to <%= item.name %></p>
-      <p><strong> <%= item.name %> </strong></p>
+      <h1><%= item.name %></h1>
       <ul>
-        <li><strong>Description: </strong> <%= item.description %></li>
-        <li><strong>Category: </strong> <%= item.category.name %></li>
-        <li><strong>Price: </strong> $<%= item.price %></li>
-        <li><strong>Brand: </strong> <%= item.brand.name %></li>
-        <li><strong>Amount in Stock: </strong> <%= item.amount_stock %></li>
-        <li><strong>SKU: </strong> <%= item.sku.toUpperCase() %></li>
+        <li><span class="blackBoldText">Description: </span> <%= item.description %></li>
+        <li><span class="blackBoldText">Category: </span> <%= item.category.name %></li>
+        <li><span class="blackBoldText">Price: </span> $<%= item.price %></li>
+        <li><span class="blackBoldText">Brand: </span> <%= item.brand.name %></li>
+        <li><span class="blackBoldText">Amount in Stock: </span> <%= item.amount_stock %></li>
+        <li><span class="blackBoldText">SKU: </span> <%= item.sku.toUpperCase() %></li>
       </ul>
       <hr />
-      <p><a href="<%= item.url +'/delete' %>">Delete</a></p>
-      <p><a href="<%= item.url +'/update' %>">Update</a></p>
+      <p class="delete"><a href="<%= item.url +'/delete' %>">Delete</a></p>
+      <p class="update"><a href="<%= item.url +'/update' %>">Update</a></p>
     </div>
   </body>
 </html>

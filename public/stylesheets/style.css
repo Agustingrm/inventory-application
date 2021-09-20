@@ -1,17 +1,121 @@
-body {
-  display: flex;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: #4a4a4a;
+  border-right: 1px #888 solid;
+  position: fixed;
+}
+.sidebar h2 {
+  color: black;
+  font-weight: 600;
+  text-align: center;
+}
+.sidebar li {
+  list-style-type: none;
+  padding-left: 10px;
+}
+.sidebar li:hover {
+  color: black;
+  font-weight: 600;
+}
+.sidebar a {
+  text-decoration: none;
+}
+.sidebar a:visited {
+  color: inherit;
 }
 
-.sidebar {
-  width: 180px;
+body {
+  margin: 0;
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 19.02px 0;
+  color: black;
 }
 
 .content {
   padding-left: 20px;
-  width: calc(100% - 200px);
+  padding: 0 20px;
+  width: calc(100% - 230px);
+  margin: 0 0 20px 230px;
+  color: #4a4a4a;
+  font-weight: 400;
+}
+.content ul {
+  padding: 0;
+}
+.content ul li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
 }
 
 form {
   display: flex;
   flex-direction: column;
 }
+form label {
+  margin: 5px 0;
+  color: black;
+  font-weight: 600;
+}
+form input,
+form select {
+  box-sizing: border-box;
+  width: 50%;
+  height: 30px;
+  padding-left: 5px;
+}
+form input[type=submit] {
+  width: 80px;
+  margin-top: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.blackBoldText {
+  color: black;
+  font-weight: 600;
+}
+
+.itemTitle {
+  color: black;
+  font-weight: 600;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.itemShortDescription {
+  margin: 0 0 0 20px;
+}
+
+.delete {
+  font-weight: 600;
+  margin: 5px 0;
+}
+.delete a {
+  color: red;
+}
+
+.update {
+  font-weight: 600;
+  margin: 5px 0;
+}
+.update a {
+  color: #00b900;
+}
+
+/*# sourceMappingURL=style.css.map */

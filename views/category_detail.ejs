@@ -7,8 +7,7 @@
   <body>
     <%- include('partials/sidebar'); %>
     <div class="content">
-      <h1><%= title %></h1>
-      <p>Welcome to <%= category.name %></p>
+      <h1><%= category.name %></h1>
       <% if(category_items.length > 0) { %>
       <ul>
         <% for(let category of category_items) {%>
@@ -21,9 +20,9 @@
       <% } else { %>
       <p>There are no items associated to this category</p>
       <% } %>
-      <hr>
-      <p><a href="<%= category.url +'/delete' %>">Delete</a></p>
-      <p><a href="<%= category.url +'/update' %>">Update</a></p>
+      <hr />
+      <p class="delete"><a href="<%= category.url +'/delete' %>">Delete</a></p>
+      <p class="update"><a href="<%= category.url +'/update' %>">Update</a></p>
     </div>
   </body>
 </html>

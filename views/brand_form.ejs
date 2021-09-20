@@ -11,7 +11,7 @@
       <form method="POST">
         <label for="name">Brand</label>
         <input type="text" placeholder="Adidas, Nike, Reebok" name="name" value="<%= undefined === brand ? '' : brand.name%>" />
-        <input type="submit" value="Create" />
+        <input type="submit" value="Submit" />
       </form>
       <% if(errors){ %> 
       <% for(let error of errors) {%>

@@ -8,11 +8,11 @@
     <%- include('partials/sidebar'); %>
     <div class="content">
       <h1><%= title %></h1>
-      <p>Welcome to <%= title %></p>
+      <p>Here you can find all the items in the database ordered alphabetically</p>
       <% item_list.sort(function(a, b) {let textA = a.name.toUpperCase(); let textB = b.name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;}) %>
       <% let i = 0 %> <% item_list.forEach(()=>{ %>
-      <p><strong> <%= item_list[i].name %> </strong></p>
-      <ul>
+      <p class='itemTitle'><%= item_list[i].name %></p>
+      <ul class='itemShortDescription'>
         <li><strong>Amount in Stock: </strong> <%= item_list[i].amount_stock %></li>
         <li><strong>SKU: </strong> <%= item_list[i].sku.toUpperCase() %></li>
         <a href='<%=item_list[i].url%>'>More Details</a>
