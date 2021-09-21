@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var favicon = require("serve-favicon");
+require('dotenv').config()
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -13,12 +14,13 @@ var helmet = require('helmet');
 
 var app = express();
 
+
 app.use(helmet());
 app.use(compression()); //Compress Routes
 
 //Set up mongoose connection
 var mongoose = require("mongoose");
-var dev_db_url = "mongodb+srv://agustingrm:inventory@cluster0.1wqqr.mongodb.net/inventory?retryWrites=true&w=majority";
+var dev_db_url = process.env.database;
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
