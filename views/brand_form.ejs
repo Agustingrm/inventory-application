@@ -3,6 +3,7 @@
   <head>
     <title><%= title %></title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
     <%- include('partials/sidebar'); %>
@@ -10,12 +11,16 @@
       <h1><%= title %></h1>
       <form method="POST">
         <label for="name">Brand</label>
-        <input type="text" placeholder="Adidas, Nike, Reebok" name="name" value="<%= undefined === brand ? '' : brand.name%>" />
+        <input
+          type="text"
+          placeholder="Adidas, Nike, Reebok"
+          name="name"
+          value="<%= undefined === brand ? '' : brand.name%>"
+        />
         <input type="submit" value="Submit" />
       </form>
-      <% if(errors){ %> 
-      <% for(let error of errors) {%>
-        <p><%= error.msg %></p>
+      <% if(errors){ %> <% for(let error of errors) {%>
+      <p><%= error.msg %></p>
       <% }} %>
     </div>
   </body>
