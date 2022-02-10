@@ -1,9 +1,10 @@
 .sidebar {
+  background-color: white;
   width: 230px;
   height: 100vh;
   padding: 0 20px;
   box-sizing: border-box;
-  color: $softGray;
+  color: #4a4a4a;
   border-right: 1px #888 solid;
   position: fixed;
   h2 {
@@ -11,10 +12,12 @@
     font-weight: 600;
     text-align: center;
   }
+  ul {
+    padding: 0;
+  }
   li {
     list-style-type: none;
     padding-left: 10px;
-
   }
   li:hover {
     color: black;
@@ -25,5 +28,35 @@
   }
   a:visited {
     color: inherit;
+  }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    padding: 0;
+    width: 100vw;
+    height: 135px;
+    h2 {
+      margin: 5px 0;
+    }
+    a {
+      font-size: 12px;
+    }
+    .topList {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      justify-items: center;
+    }
+    .bottomList {
+      display: grid;
+      grid-template-columns: repeat(3, 32%);
+      column-gap: 2%;
+      justify-items: center;
+    }
+    .topList,
+    .bottomList {
+      padding: 0 5px;
+      margin: 5px 0;
+    }
   }
 }

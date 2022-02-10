@@ -281,30 +281,14 @@ exports.item_update_post = [
     if (!errors.isEmpty()) {
       // There are errors. Render form again with sanitized values/error messages.
 
-      // Get all categories and brands for form.
-      async.parallel(
-        {
-          categories: function (callback) {
-            Category.find(callback);
-          },
-          brands: function (callback) {
-            Brand.find(callback);
-          },
-        },
-        function (err, results) {
-          if (err) {
-            return next(err);
-          }
+      if (err) {
+        return next(err);
+      }
+      res.render("join-member", {
+        title: "Become a member ",
+        errors: errors.array(),
+      });
 
-          res.render("item_form", {
-            title: "Update Item",
-            categories: results.categories,
-            brands: results.brands,
-            item: item,
-            errors: errors.array(),
-          });
-        }
-      );
       return;
     } else {
       // Data from form is valid. Update the record.
